@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="John Doe"><meta name="renderer" content="webkit"><meta name="copyright" content="John Doe"><meta name="keywords" content="Hexo"><meta name="description" content=""><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>排序 · 我家</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/%E5%B0%8F%E5%85%8B%E5%96%B5.jpg"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/%E5%85%8B%E5%96%B5.jpg"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">Chaospeo</div><div class="profile-signature">顶不得了</div><div class="friends"><div>FRIENDS</div><span><a href="https://ewojii.com/" target="_black">friendA</a></span><span><a href="https://github.com/Chaospeo" target="_black">friendB</a></span><span><a href="https://github.com/Chaospeo" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">呃呃</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">排序</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2024-03-17</span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="入门"> 入门</a><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="算法"> 算法</a></span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>  <strong>排序算法</strong>（英语：Sorting algorithm）是一种将一组特定的数据按某种顺序进行排列的算法。排序算法多种多样，性质也大多不同。</p>
+<p>  排序算法的种类很多，例如选择排序，冒泡排序，插入排序，基数排序，快速排序，归并排序，堆排序，桶排序……</p>
+<p>  不同种类的排序算法用途一般不同，不过最常用的无非就是快速排序和sort函数排序，后者更是基本适用所有情况，接下来我要介绍的几种排序算法中也会着重介绍他们。</p>
+<h2 id="选择排序和冒泡排序"><a href="#选择排序和冒泡排序" class="headerlink" title="选择排序和冒泡排序"></a>选择排序和冒泡排序</h2><p>  选择排序是一种十分直观的排序算法，大概就是在第i次循环中选中未排序元素中最小的元素，将其放到数组第i位，并进入下一轮寻找最小元素的循环中。</p>
+<p>  大致代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> n=<span class="number">4</span>;</span><br><span class="line">	<span class="type">int</span> a[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">3</span>&#125;;</span><br><span class="line">    <span class="comment">//前n-1个元素排序完了，第n个元素就自动排序好了，并且这里数组下标从0开始，故循环至n-1</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">		<span class="type">int</span> mi=a[i],xb=i; <span class="comment">//设置最小值和最小值元素对应下标 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			<span class="keyword">if</span>(a[j]&lt;mi)&#123;</span><br><span class="line">				mi=a[j];</span><br><span class="line">				xb=j;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="comment">//交换元素 </span></span><br><span class="line">		<span class="type">int</span> tmp=a[i];</span><br><span class="line">		a[i]=a[xb];</span><br><span class="line">		a[xb]=tmp; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">		cout&lt;&lt;a[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  这段代码运行结果如下：</p>
+<p>  1 3 4 5 9</p>
+<p>  可以看到，数组元素被正确排序了，尽管如此，选择排序并不是最符合我们要求的算法。</p>
+<p>  原因有二：</p>
+<p>  其一，不稳定性。选择排序的结果是对的，但是过程中数组元素并不是有序的，例如上述代码，最初数组元素为 1 5 4 9 3，第一轮排序，1是最小，数组元素相对大小顺序不会发生改变，但第二轮排序，3是最小，与5交换，数组元素变成1 3 4 9 5，5应该在9之前才是有序的，但在这里变成了5在9后面，打乱了未排序元素的相对大小顺序。</p>
+<p>  其二，糟糕的时间复杂度，可以看到，在代码中我们使用了两个循环，并且循环次数都可以近似看成n，也就是说，选择排序的时间复杂度是O(n²)，对于元素有几十万甚至更多的数组，排序时间是远远超出了限定时间的。</p>
+<p>  同样，冒泡排序的时间复杂度也是O(n²)，但它与选择排序不同的是，选择排序每轮寻找最小值，冒泡排序每轮寻找最大值。</p>
+<p>  代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;iostream&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> n=<span class="number">4</span>;</span><br><span class="line">	<span class="type">int</span> a[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">3</span>&#125;;</span><br><span class="line">	<span class="comment">//最外轮循环代表循环次数 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="comment">//如果有i-1个元素排序好了，后面i个元素就不用再遍历了 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n-i;j++)</span><br><span class="line">			<span class="comment">//相邻元素比较大小交换 </span></span><br><span class="line">			<span class="keyword">if</span>(a[j]&gt;a[j+<span class="number">1</span>])&#123;</span><br><span class="line">				<span class="type">int</span> tmp=a[j];</span><br><span class="line">				a[j]=a[j+<span class="number">1</span>];</span><br><span class="line">				a[j+<span class="number">1</span>]=tmp;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">		cout&lt;&lt;a[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  结果显然易见:1 3 4 5 9。</p>
+<p>  为什么叫冒泡排序呢？如果第一个元素最大，那他在第一轮排序与每个相邻元素都要交换，最后成为数组最后一位元素，这一轮排序全部操作列出来，第一个元素就像在逐渐沉底，那它反过来就是逐渐上升，像气泡逐渐上升冒出水面，故曰：冒泡排序。</p>
+<p>  选择排序具有不稳定性，但冒泡排序却具有稳定性，因为一定是比当前元素大的元素排在当前元素右边，原本相对大小顺序并不会改变。</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>  重头戏登场，没有时间为选择排序和冒泡排序的超时哀悼，随之赶到OJ的是——快速排序。</p>
+<p>  快速排序从两头同时排序，采用分治方法，最优情况下稳定的O(nlogn)时间复杂度简直薄纱上面两个排序算法，虽然最坏情况下时间复杂度仍是O(n²)，但在使用情况中基本不可能出现最坏情况，可以说它的时间复杂度就是O(nlogn)。</p>
+<p>  快排的思路就是：选中当前数组左端点i&#x3D;l和右端点j&#x3D;r以及分界点元素a[(l+r)&#x2F;2]也就是最中间的元素，每次用while寻找i到中点的第一个大于分界点的元素，再用while循环寻找j到中点的第一个小于分界点的元素，如果i和j没有越过中点即i&lt;&#x3D;j，交换他们的值，排序完后，左端点到中点的元素都小于分界点，中点到右端点的元素都大于分界点，但是，他们这时还不是有序的，比如2 1 3 4 8 9 7，那怎么办呢？那还不简单，接着排序呗，这时排序就不用从最开始的左端点到右端点排序了，如果</p>
+</article><!-- lincense--><div class="post-paginator"><a class="nextSlogan" href="/2024/03/10/%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" title="最短路问题（持续更新）"><span>NextPost ></span><br><span class="nextTitle">最短路问题（持续更新）</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E5%92%8C%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">选择排序和冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">快速排序</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
